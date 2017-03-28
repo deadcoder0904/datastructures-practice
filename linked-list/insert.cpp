@@ -17,7 +17,7 @@ void printList(node *node) {
 	cout<<"NULL";
 }
 
-void insertAtFirst(node **head, dataType data) {
+void insertAtStart(node **head, dataType data) {
 	node* new_node = (node*) malloc(sizeof(node));
 	
 	new_node->data = data;
@@ -63,7 +63,7 @@ int main()
 {
 	node *head = NULL;
 	insertAtEnd(&head, 'B');
-	insertAtFirst(&head, 'A');
+	insertAtStart(&head, 'A');
 	insertAfter(head->next, 'C');
 	insertAtEnd(&head, 'D');
 	insertAtEnd(&head, 'E');
