@@ -14,7 +14,7 @@ void printList(node *node) {
 		cout<<(node->data)<<" -> ";
 		node = node->next;
 	}
-	cout<<"NULL";
+	cout<<"NULL"<<endl;
 }
 
 void insertAtStart(node **head, dataType data) {
@@ -26,7 +26,7 @@ void insertAtStart(node **head, dataType data) {
 	*head = new_node;
 }
 
-void deleteNode(node **head, dataType key) {
+void deleteNodeWithSpecifiedKey(node **head, dataType key) {
 	node *temp = *head, *prev;
 	if(temp != NULL && temp->data == key) {
 		*head = temp->next;
@@ -48,13 +48,42 @@ void deleteNode(node **head, dataType key) {
 	free(temp);
 }
 
+void deleteNodeWithSpecifiedPostion(node **head,int position) {
+	node *temp = *head;
+	
+	if(temp == NULL) 
+		return;
+
+	if(position == 0) {
+		*head = temp->next;
+		free(temp);
+		return;
+	}
+
+	for(int i = 0; temp != NULL && i < position-1; i++) 
+		temp = temp->next;
+	
+	if(temp == NULL || temp->next == NULL)
+		return;
+
+	free(temp->next);
+	temp->next = temp->next->next;
+}
+
 int main()
 {
 	node *head = NULL;
 	insertAtStart(&head, 'C');
 	insertAtStart(&head, 'B');
 	insertAtStart(&head, 'A');
-	deleteNode(&head, 'B');
+	insertAtStart(&head, 'D');
+	insertAtStart(&head, 'E');
+	insertAtStart(&head, 'F');
+	cout<<"Deleting node with key 'B' : "<<endl;
+	deleteNodeWithSpecifiedKey(&head, 'B');
+	printList(head);
+	cout<<"Deleting node at position 2 : "<<endl;
+	deleteNodeWithSpecifiedPostion(&head,2);
 	printList(head);
 	return 0;
 }
