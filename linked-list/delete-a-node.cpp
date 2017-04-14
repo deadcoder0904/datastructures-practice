@@ -66,24 +66,24 @@ void deleteNodeWithSpecifiedPostion(node **head,int position) {
 	if(temp == NULL || temp->next == NULL)
 		return;
 
+	node *next = temp->next->next;
+
 	free(temp->next);
-	temp->next = temp->next->next;
+	temp->next = next;
 }
 
 int main()
 {
 	node *head = NULL;
+	insertAtStart(&head, 'D');
 	insertAtStart(&head, 'C');
 	insertAtStart(&head, 'B');
 	insertAtStart(&head, 'A');
-	insertAtStart(&head, 'D');
-	insertAtStart(&head, 'E');
-	insertAtStart(&head, 'F');
-	cout<<"Deleting node with key 'B' : "<<endl;
-	deleteNodeWithSpecifiedKey(&head, 'B');
+	cout<<"Deleting node with key 'C' : "<<endl;
+	deleteNodeWithSpecifiedKey(&head, 'C');
 	printList(head);
-	cout<<"Deleting node at position 2 : "<<endl;
-	deleteNodeWithSpecifiedPostion(&head,2);
+	cout<<"Deleting node at position 1 : "<<endl;
+	deleteNodeWithSpecifiedPostion(&head,1);
 	printList(head);
 	return 0;
 }
