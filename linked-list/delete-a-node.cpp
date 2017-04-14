@@ -29,7 +29,6 @@ void insertAtStart(node **head, dataType data) {
 void deleteNode(node **head, dataType key) {
 	node *temp = *head, *prev;
 	if(temp != NULL && temp->data == key) {
-		cout<<"List is empty"<<endl;
 		*head = temp->next;
 		free(temp);
 		return;
