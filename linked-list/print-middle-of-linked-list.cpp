@@ -43,7 +43,8 @@ dataType getMiddleNode1(node *head) {
 		count++;
 		temp = temp->next;
 	}
-
+	if(temp == NULL)
+        return '0';
 	return temp->data;
 }
 
