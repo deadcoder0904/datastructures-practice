@@ -14,7 +14,7 @@ void printList(node *node) {
 		cout<<(node->data)<<" -> ";
 		node = node->next;
 	}
-	cout<<"NULL";
+	cout<<"NULL"<<endl;
 }
 
 void insertAtStart(node **head, dataType data) {
