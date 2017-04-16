@@ -28,23 +28,18 @@ void insertAtStart(node **head, dataType data) {
 
 dataType getNthNodeFromLast(node *head, int n) {
 	node *temp = head;
-	int count = 0;
-
-	while(temp != NULL) {
-		count++;
+	int count;
+	
+	for(count = 0; temp != NULL; count++)
 		temp = temp->next;
-	}
-	int position = count - n;
-	count = 0;
-	temp = head;
-
-	while(count != position) {
-		count++;
-		temp = temp->next;
-	}
-
-	if(temp == NULL)
+	
+	if(count < n)
 		return '0';
+	
+	temp = head;	
+	for(int i = 1; i < count - n + 1; i++)
+		temp = temp->next;
+
 	return temp->data;
 }
 
