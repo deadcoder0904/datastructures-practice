@@ -14,7 +14,7 @@ void printList(node *node) {
 		cout<<"The linked list is empty"<<endl;
 		return;
 	}
-	
+
 	while(node != NULL) {
 		cout<<(node->data)<<" -> ";
 		node = node->next;
@@ -31,21 +31,16 @@ void insertAtStart(node **head, dataType data) {
 	*head = new_node;
 }
 
-dataType getNthNodeFromLast(node *head, int n) {
-	node *temp = head;
-	int len;
-	
-	for(len = 0; temp != NULL; len++)
-		temp = temp->next;
+void deleteLinkedList(node **head) {
+	node *current = *head, *next;
 
-	if(len < n)
-		return '0';
-	
-	temp = head;
-	for(int i = 0; i < len - n; i++)
-		temp = temp->next;
-	
-	return temp->data;
+	while(current != NULL) {
+		next = current->next;
+		free(current);
+		current = next;
+	}
+
+	*head = NULL;
 }
 
 int main()
@@ -57,6 +52,7 @@ int main()
 	insertAtStart(&head, 'B');
 	insertAtStart(&head, 'A');
 	printList(head);
-	cout<<"Get 1st Node From Last : "<<getNthNodeFromLast(head,1)<<endl;
+	deleteLinkedList(&head);
+	printList(head);
 	return 0;
 }

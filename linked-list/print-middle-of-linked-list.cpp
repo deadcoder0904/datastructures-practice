@@ -10,6 +10,16 @@ typedef struct node {
 } node;
 
 void printList(node *node) {
+	if(node == NULL) {
+		cout<<"The linked list is empty"<<endl;
+		return;
+	}
+	
+	if(node == NULL) {
+		cout<<"The linked list is empty"<<endl;
+		return;
+	}
+
 	while(node != NULL) {
 		cout<<(node->data)<<" -> ";
 		node = node->next;
@@ -27,24 +37,20 @@ void insertAtStart(node **head, dataType data) {
 }
 
 dataType getMiddleNode1(node *head) {
-	node *temp = head;
+	if(head == NULL)
+		return '0';
+
 	int count = 0;
-
-	while(temp != NULL) {
-		count++;
+	node *temp = head;
+	
+	for(count = 0; temp != NULL; count++) 
 		temp = temp->next;
-	}
-
-	int middle = count / 2 + 1;
+	
 	temp = head;
-	count = 0;
-
-	while(count != middle-1) {
-		count++;
+	
+	for(int i = 0; i < count/2; i++)
 		temp = temp->next;
-	}
-	if(temp == NULL)
-        return '0';
+	
 	return temp->data;
 }
 
@@ -63,17 +69,17 @@ dataType getMiddleNode2(node *head) {
 }
 
 dataType getMiddleNode3(node *head) {
+	if(head == NULL)
+		return '0';
+	
 	node *mid = head;
-	int count = 0;
-
-	while(head != NULL) {
+	
+	for(int count = 0; head != NULL; count++) {
 		if(count & 1)
 			mid = mid->next;
-		count++;
 		head = head->next;
 	}
-	if(mid == NULL)
-		return '0';
+	
 	return mid->data;
 }
 

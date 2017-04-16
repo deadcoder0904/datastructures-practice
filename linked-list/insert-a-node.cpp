@@ -10,6 +10,11 @@ typedef struct node {
 } node;
 
 void printList(node *node) {
+	if(node == NULL) {
+		cout<<"The linked list is empty"<<endl;
+		return;
+	}
+	
 	while(node != NULL) {
 		cout<<(node->data)<<" -> ";
 		node = node->next;
