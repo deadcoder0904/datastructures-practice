@@ -31,33 +31,49 @@ void insertAtStart(node **head, dataType data) {
 	*head = new_node;
 }
 
-void reverseList(node **head) {
+void iterativeReverse(node **head) {
 	node *prev = NULL, *current = *head, *next;
+	
 	while(current != NULL) {
 		next = current->next;
 		current->next = prev;
 		prev = current;
 		current = next;
 	}
+	
 	*head = prev;
+}
+
+void recursiveReverse(node **head) {
+	node *first, *rest;
+	
+	if(*head == NULL)
+		return;
+
+	first = *head;
+	rest = first->next;
+
+	if(rest == NULL)
+		return;
+
+	recursiveReverse(&rest);
+
+	first->next->next = first;
+	first->next = NULL;
+
+	*head = rest;
 }
 
 int main()
 {
 	node *head = NULL;
-	insertAtStart(&head, 'E');
-	insertAtStart(&head, 'D');
-	insertAtStart(&head, 'A');
-	insertAtStart(&head, 'F');
-	insertAtStart(&head, 'A');
 	insertAtStart(&head, 'C');
-	insertAtStart(&head, 'A');
 	insertAtStart(&head, 'B');
-	insertAtStart(&head, 'C');
-	insertAtStart(&head, 'A');
 	insertAtStart(&head, 'A');
 	printList(head);
-	reverseList(&head);
+	iterativeReverse(&head);
+	printList(head);
+	recursiveReverse(&head);
 	printList(head);
 	return 0;
 }
