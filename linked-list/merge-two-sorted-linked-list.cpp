@@ -9,6 +9,19 @@ typedef struct node {
 	struct node *next;
 } node;
 
+void printList(node *node) {
+	if(node == NULL) {
+		cout<<"The linked list is empty"<<endl;
+		return;
+	}
+
+	while(node != NULL) {
+		cout<<(node->data)<<" -> ";
+		node = node->next;
+	}
+	cout<<"NULL"<<endl;
+}
+
 void insertAtEnd(node **head, dataType data) {
 	node* new_node = (node*) malloc(sizeof(node));
 	
@@ -69,19 +82,6 @@ node* recursiveMergeSort(node *x, node *y) {
 		head->next = recursiveMergeSort(x,head->next);
 	}
 	return head;
-}
-
-void printList(node *node) {
-	if(node == NULL) {
-		cout<<"The linked list is empty"<<endl;
-		return;
-	}
-
-	while(node != NULL) {
-		cout<<(node->data)<<" -> ";
-		node = node->next;
-	}
-	cout<<"NULL"<<endl;
 }
 
 int main()
