@@ -14,11 +14,6 @@ void printList(node *node) {
 		cout<<"The linked list is empty"<<endl;
 		return;
 	}
-	
-	if(node == NULL) {
-		cout<<"The linked list is empty"<<endl;
-		return;
-	}
 
 	while(node != NULL) {
 		cout<<(node->data)<<" -> ";
