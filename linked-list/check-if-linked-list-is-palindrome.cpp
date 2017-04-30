@@ -32,12 +32,12 @@ void insertAtStart(node **head, dataType data) {
 }
 
 node* cloneLinkedListInReverse(node *temp) {
-	node *head = NULL;
+	node *reverse = NULL;
 	while(temp != NULL) {
-		insertAtStart(&head,temp->data);
+		insertAtStart(&reverse,temp->data);
 		temp = temp->next;
 	}
-	return head;
+	return reverse;
 }
 
 int isPalindrome(node *head1,node *head2) {
