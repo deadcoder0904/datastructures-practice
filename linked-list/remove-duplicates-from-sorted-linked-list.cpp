@@ -31,7 +31,7 @@ void insertAtStart(node **head, dataType data) {
 	*head = new_node;
 }
 
-void removeDuplicates(node *head) {
+void removeDuplicatesFromSortedList(node *head) {
 	if(head == NULL)
 		return;
 
@@ -60,7 +60,7 @@ int main()
 	insertAtStart(&head, 'A');
 	insertAtStart(&head, 'A');
 	printList(head);
-	removeDuplicates(head);
+	removeDuplicatesFromSortedList(head);
 	printList(head);
 	return 0;
 }
