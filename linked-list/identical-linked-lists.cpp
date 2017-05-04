@@ -31,19 +31,23 @@ void insertAtStart(node **head, dataType data) {
 	*head = new_node;
 }
 
-string identicalLinkedLists(node *x, node *y) {
-	if(x == y) return "Linked Lists are Identical";
-
+bool identicalLinkedListsIterative(node *x, node *y) {
 	while(x != NULL && y != NULL) {
 		if(x->data != y->data)
-			return "Linked Lists are Not Identical";
+			return false;
 		x = x->next;
 		y = y->next;
 	}
 	
-	if(x == NULL && y == NULL) 
-		return "Linked Lists are Identical";
-	return "Linked Lists are Not Identical";
+	return x == NULL && y == NULL;
+}
+
+bool identicalLinkedListsRecursive(node *x, node *y) {
+	if(x == NULL && y == NULL) return true;
+
+	if(x != NULL && y != NULL) 
+		return (x->data == y->data) && identicalLinkedListsRecursive(x->next,y->next);
+	return false;
 }
 
 int main()
@@ -65,8 +69,16 @@ int main()
 	insertAtStart(&y, 'E');
 	cout<<"Linked List 2 : "<<endl;
 	printList(y);
+	
+	cout<<"Iterative Method - "<<endl;
+	if(identicalLinkedListsIterative(x,y))
+		cout<<"Linked Lists are Identical"<<endl;
+	else cout<<"Linked Lists are Not Identical"<<endl;
 
-	cout<<identicalLinkedLists(x,y);
+	cout<<"Recursive Method - "<<endl;
+	if(identicalLinkedListsRecursive(x,y))
+		cout<<"Linked Lists are Identical"<<endl;
+	else cout<<"Linked Lists are Not Identical"<<endl;
 
 	return 0;
 }
