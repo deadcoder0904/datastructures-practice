@@ -31,8 +31,8 @@ void insertAtStart(node **head, dataType data) {
 	*head = new_node;
 }
 
-void deleteAlternateNodes(node **head) {
-	node *current = *head, *next_ptr;
+void deleteAlternateNodesIterative(node *head) {
+	node *current = head, *next_ptr;
 
 	while(current != NULL && current->next != NULL) {
 		next_ptr = current->next;
@@ -40,6 +40,15 @@ void deleteAlternateNodes(node **head) {
 		free(next_ptr);
 		current = current->next;
 	}
+}
+
+void deleteAlternateNodesRecursive(node *head) {
+	if(head == NULL || head->next == NULL) return;
+
+	node *next_ptr = head->next;
+	head->next = next_ptr->next;
+	free(next_ptr);
+	deleteAlternateNodesRecursive(head->next);
 }
 
 int main()
@@ -51,7 +60,11 @@ int main()
 	insertAtStart(&head, 'B');
 	insertAtStart(&head, 'A');
 	printList(head);
-	deleteAlternateNodes(&head);
+	cout<<"Delete Alternate Nodes Iteratively : "<<endl;
+	deleteAlternateNodesIterative(head);
+	printList(head);
+	cout<<"Delete Alternate Nodes Recursively : "<<endl;
+	deleteAlternateNodesRecursive(head);
 	printList(head);
 	return 0;
 }
