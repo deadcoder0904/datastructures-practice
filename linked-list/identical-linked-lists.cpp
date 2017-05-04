@@ -67,8 +67,6 @@ int main()
 	printList(y);
 
 	cout<<identicalLinkedLists(x,y);
-	x =NULL;
-	y =NULL;
-	cout<<identicalLinkedLists(x,y);
+
 	return 0;
 }
