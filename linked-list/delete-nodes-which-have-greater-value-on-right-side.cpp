@@ -55,7 +55,7 @@ void delNodes(node *head) {
 		else current = current->next;
 }
 
-void deleteNodesHavingGreaterValueOnRightSideIterative(node **head) {
+void deleteNodesHavingGreaterValueOnRightSide(node **head) {
 	if(*head == NULL) return;
 
 	iterativeReverse(head);
@@ -72,7 +72,7 @@ int main()
 	insertAtStart(&head, 'C');
 	insertAtStart(&head, 'E');
 	printList(head);
-	deleteNodesHavingGreaterValueOnRightSideIterative(&head);
+	deleteNodesHavingGreaterValueOnRightSide(&head);
 	printList(head);
 	return 0;
 }
