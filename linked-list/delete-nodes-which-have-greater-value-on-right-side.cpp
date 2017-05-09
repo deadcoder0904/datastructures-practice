@@ -45,17 +45,14 @@ void iterativeReverse(node **head) {
 }
 
 void delNodes(node *head) {
-	node *current = head, *maxnode = head;
+	node *current = head;
 	while(current != NULL && current->next != NULL)
-		if(current->next->data < maxnode->data) {
+		if(current->next->data < current->data) {
 			node *temp = current->next;
 			current->next = temp->next;
 			free(temp);
 		}
-		else {
-			current = current->next;
-			maxnode = current;
-		}
+		else current = current->next;
 }
 
 void deleteNodesHavingGreaterValueOnRightSideIterative(node **head) {
