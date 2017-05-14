@@ -9,6 +9,19 @@ typedef struct node {
     struct node *next;
 } node;
 
+void printList(node *node) {
+    if(node == NULL) {
+        cout<<"The linked list is empty"<<endl;
+        return;
+    }
+    
+    while(node != NULL) {
+        cout<<(node->data)<<" -> ";
+        node = node->next;
+    }
+    cout<<"NULL"<<endl;
+}
+
 void insertAtStart(node **head, dataType data) {
     node* new_node = (node*) malloc(sizeof(node));
     
@@ -29,7 +42,6 @@ int detectAndRemoveLoop(node *head) {
     
     if(slow_ptr != fast_ptr) 
         return 0;
-
     slow_ptr = head;
     while(slow_ptr != fast_ptr->next) {
         slow_ptr = slow_ptr->next;
@@ -47,8 +59,10 @@ int main()
     insertAtStart(&head, 'A');
     head->next->next->next = head->next;
     int loop = detectAndRemoveLoop(head);
-    if(loop)
+    if(loop) {
         cout<<"Loop detected and removed"<<endl;
+        printList(head);
+    }
     else
         cout<<"Loop not detected"<<endl;
     return 0;
