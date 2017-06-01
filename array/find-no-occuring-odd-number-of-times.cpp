@@ -21,6 +21,6 @@ int main()
 	int arr[] = {2, 3, 5, 4, 5, 2, 4, 3, 5, 2, 4, 4, 2};
 	int len = sizeof(arr) / sizeof(arr[0]);
 	printArray(arr,len);
-	cout<<"Count: "<<getOccurrences(arr, len);
+	cout<<"Number: "<<getOccurrences(arr, len);
 	return 0;
 }
